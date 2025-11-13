@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Lista de Produtos | Estoque</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+<body>
+
+<div class="container my-4">
+    <h1 class="mb-4">📋 Lista de Produtos</h1>
+
+    <a class="btn btn-primary mb-3" th:href="@{/produtos/criar}">
+        <i class="fas fa-plus"></i> Criar Novo Produto
+    </a>
+
+    <table class="table table-striped table-hover table-bordered">
+        <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Preço</th>
+            <th>Estoque</th>
+            <th>Ações</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="produto : ${produtos}">
+            <td th:text="${#strings.substring(produto.id, 0, 8) + '...'}">ID do Produto</td>
+
+            <td th:text="${produto.nome}">Nome do Produto</td>
+
+            <td th:text="${#numbers.formatCurrency(produto.preco)}">R$ 0.00</td>
+
+            <td th:text="${produto.estoque}">0</td>
+
+            <td>
+                <a class="btn btn-sm btn-info me-2" th:href="@{/produtos/alterar/{id}(id=${produto.id})}">Editar</a>
+                <form th:action="@{/produtos/excluir/{id}(id=${produto.id})}" method="post" style="display:inline;">
+                    <button type="submit"
+                            class="btn btn-sm btn-danger"
+                            onclick="return confirm('Tem certeza que deseja excluir este produto?');">
+                        Excluir
+                    </button>
+                </form>            </td>
+        </tr>
+        <tr th:if="${#lists.isEmpty(produtos)}">
+            <td colspan="5" class="text-center">Nenhum produto cadastrado no momento.</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</body>
+</html>
