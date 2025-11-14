@@ -1,0 +1,7 @@
+esse aqui ta se quiser usar
+
+npm run dev pra entrar no front
+
+back end e so rodar o python = python app.py
+
+também tem um documento
