@@ -1,0 +1,65 @@
+.modalOverlay {
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+}
+
+.modalContainer {
+    background: #fff;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 480px;
+    padding: 20px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+    position: relative;
+}
+
+.closeModal{
+    position: absolute;
+    right: 12px;
+    top: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.modalContainer h2{
+    margin-bottom: 12px;
+}
+
+.modalContainer label{
+    display: block;
+    margin-top: 8px;
+    margin-bottom: 4px;
+    font-size: 14px;
+}
+
+.modalContainer input{
+    width: 100%;
+    padding: 8px 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+.modalContainer button{
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    background: #1a6b89;
+    color: white;
+    font-weight: 600;
+}
+
+.modalContainer button[type="button"]{
+    background: #ccc;
+    color: #111;
+}
